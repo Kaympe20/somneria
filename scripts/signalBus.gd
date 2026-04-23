@@ -1,4 +1,5 @@
 extends Node
 
 signal returnToReality();
-signal loadLevel(levelName: Variant);
+signal loadLevel(levelIdentifier: Variant);
+signal gameStart();

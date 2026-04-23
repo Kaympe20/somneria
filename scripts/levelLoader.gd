@@ -15,7 +15,7 @@ func loadLevel(levelIdentifier):
 		
 		var levelPath: String;
 		
-		levelPath = "res://scenes/%s/%s.tscn" % levelIdentifier;
+		levelPath = "res://scenes/%s/%s.tscn" % [levelIdentifier, levelIdentifier]
 		
 		var levelResource : PackedScene = load(levelPath);
 		
@@ -46,6 +46,7 @@ func loadLevel(levelIdentifier):
 func _ready() -> void:
 	SignalBus.returnToReality.connect(loadBedroom);
 	SignalBus.loadLevel.connect(loadLevel);
+	SignalBus.gameStart.connect(loadBedroom);
 
 func loadBedroom():
 	loadLevel("bedroom");
