@@ -1,4 +1,4 @@
 extends Node
 
 signal returnToReality();
-signal loadLevel(levelName: String);
+signal loadLevel(levelName: Variant);
