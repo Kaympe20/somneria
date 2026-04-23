@@ -1,8 +1,70 @@
 [gd_scene format=3 uid="uid://blxcjud6ji8nr"]
 
 [ext_resource type="Script" uid="uid://dq7rlk4asadnt" path="res://scripts/levelLoader.gd" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://5fhlq1be5klv" path="res://assets/mainMenu/bg_placeholder.png" id="2_0xm2m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ig7tw"]
+font_size = 200
 
 [node name="main" type="Node" unique_id=484706351]
 
 [node name="levelContainer" type="Node" parent="." unique_id=114511472]
 script = ExtResource("1_ig7tw")
+
+[node name="mainUI" type="CanvasLayer" parent="." unique_id=1460366926]
+
+[node name="mainMenu" type="Control" parent="mainUI" unique_id=635017227]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background" type="TextureRect" parent="mainUI/mainMenu" unique_id=1437070143]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_0xm2m")
+
+[node name="Label" type="Label" parent="mainUI/mainMenu" unique_id=788194441]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -520.5
+offset_top = 18.0
+offset_right = 520.5
+offset_bottom = 291.0
+grow_horizontal = 2
+text = "SOMNERIA"
+label_settings = SubResource("LabelSettings_ig7tw")
+
+[node name="Buttons" type="VBoxContainer" parent="mainUI/mainMenu" unique_id=50271782]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 28
+
+[node name="Start" type="Button" parent="mainUI/mainMenu/Buttons" unique_id=1133730927]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Start"
+
+[node name="Quit" type="Button" parent="mainUI/mainMenu/Buttons" unique_id=365419221]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Quit"

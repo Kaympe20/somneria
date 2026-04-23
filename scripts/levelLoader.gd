@@ -1,5 +1,6 @@
 extends Node
 
+const dreamList: Array[String] = [];
 var levelInstance;
 
 func unloadLevel():
@@ -22,6 +23,7 @@ func loadLevel(levelName: String):
 		
 func _ready() -> void:
 	SignalBus.returnToReality.connect(loadBedroom);
+	SignalBus.loadLevel.connect(loadLevel);
 
 func loadBedroom():
 	loadLevel("bedroom");
