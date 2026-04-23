@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://blxcjud6ji8nr"]
+
+[ext_resource type="Script" uid="uid://dq7rlk4asadnt" path="res://scripts/levelLoader.gd" id="1_ig7tw"]
+
+[node name="main" type="Node" unique_id=484706351]
+
+[node name="levelContainer" type="Node" parent="." unique_id=114511472]
+script = ExtResource("1_ig7tw")
