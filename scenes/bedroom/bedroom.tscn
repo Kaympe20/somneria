@@ -1,3 +1,7 @@
 [gd_scene format=3 uid="uid://d23qtd8ojimrk"]
 
+[ext_resource type="PackedScene" uid="uid://csbngv28gx0ml" path="res://components/player/thirdPerson/thirdPerson.tscn" id="1_5gqdm"]
+
 [node name="Bedroom" type="Node3D" unique_id=11163883]
+
+[node name="ThirdPerson" parent="." unique_id=1491157744 instance=ExtResource("1_5gqdm")]
