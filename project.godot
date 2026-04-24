@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Somneria"
+config/name="somneria"
 run/main_scene="uid://blxcjud6ji8nr"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://assets/icon.svg"
