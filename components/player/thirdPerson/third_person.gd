@@ -13,8 +13,7 @@ var targetVelocity = Vector3.ZERO;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -28,9 +27,9 @@ func _physics_process(delta: float) -> void:
 		inputDirection.x += 1
 	if Input.is_action_pressed("left"):
 		inputDirection.x -= 1
-	if Input.is_action_pressed("back"):
-		inputDirection.y += 1
 	if Input.is_action_pressed("forward"):
+		inputDirection.y += 1
+	if Input.is_action_pressed("back"):
 		inputDirection.y -= 1
 
 	inputDirection = inputDirection.normalized()
