@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://cdchhundhrpbe"]
+
+[ext_resource type="Texture2D" uid="uid://fgabqm57mf4w" path="res://assets/backgrounds/battle/glasshouse_interior_4k.exr" id="1_0xjgq"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ha4bs"]
+panorama = ExtResource("1_0xjgq")
+
+[sub_resource type="Sky" id="Sky_qkadb"]
+sky_material = SubResource("PanoramaSkyMaterial_ha4bs")
+
+[sub_resource type="Environment" id="Environment_5vs1m"]
+background_mode = 2
+sky = SubResource("Sky_qkadb")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aylvu"]
+size = Vector3(30, 1, 30)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0xjgq"]
+size = Vector3(30, 1, 30)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_82wna"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_08oh2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hnff8"]
+material = SubResource("StandardMaterial3D_08oh2")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_je4tf"]
+
+[node name="battle" type="Node3D" unique_id=296885428]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2076236578]
+environment = SubResource("Environment_5vs1m")
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=1887853266]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=333342427]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_aylvu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=341352951]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_0xjgq")
+
+[node name="Enemies" type="Node3D" parent="." unique_id=878686375]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32590437, 0, 3.2507277)
+
+[node name="Enemy1" type="Node3D" parent="Enemies" unique_id=712042464]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.5718617, 0, -2.4212961)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="Enemies/Enemy1" unique_id=493778414]
+
+[node name="Pivot" type="Node3D" parent="Enemies/Enemy1/CharacterBody3D" unique_id=2124225318]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enemies/Enemy1/CharacterBody3D/Pivot" unique_id=1708261773]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_82wna")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Enemies/Enemy1/CharacterBody3D/Pivot" unique_id=301152501]
+transform = Transform3D(1, 0, 0, 0, 0.46006912, 0, 0, 0, 0.4136588, 0, 1.3817252, -0.48818803)
+mesh = SubResource("BoxMesh_hnff8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/Enemy1/CharacterBody3D" unique_id=1339639169]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_je4tf")
+
+[node name="Enemy2" type="Node3D" parent="Enemies" unique_id=30510046]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.7417321, 0, 0.8560753)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="Enemies/Enemy2" unique_id=1351295317]
+
+[node name="Pivot" type="Node3D" parent="Enemies/Enemy2/CharacterBody3D" unique_id=808995715]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enemies/Enemy2/CharacterBody3D/Pivot" unique_id=1509998428]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_82wna")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Enemies/Enemy2/CharacterBody3D/Pivot" unique_id=516599051]
+transform = Transform3D(1, 0, 0, 0, 0.46006912, 0, 0, 0, 0.4136588, 0, 1.3817252, -0.48818803)
+mesh = SubResource("BoxMesh_hnff8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/Enemy2/CharacterBody3D" unique_id=1023974852]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_je4tf")
+
+[node name="Enemy3" type="Node3D" parent="Enemies" unique_id=1996021712]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -7.172524, 0, -2.4212961)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="Enemies/Enemy3" unique_id=711367452]
+
+[node name="Pivot" type="Node3D" parent="Enemies/Enemy3/CharacterBody3D" unique_id=1992080276]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enemies/Enemy3/CharacterBody3D/Pivot" unique_id=1797566160]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_82wna")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Enemies/Enemy3/CharacterBody3D/Pivot" unique_id=1400888505]
+transform = Transform3D(1, 0, 0, 0, 0.46006912, 0, 0, 0, 0.4136588, 0, 1.3817252, -0.48818803)
+mesh = SubResource("BoxMesh_hnff8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/Enemy3/CharacterBody3D" unique_id=872702345]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_je4tf")
+
+[node name="You" type="Node3D" parent="." unique_id=521535443]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 2.3841858e-07, 0, 9.962204)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="You" unique_id=1736858819]
+
+[node name="Pivot" type="Node3D" parent="You/CharacterBody3D" unique_id=583917066]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="You/CharacterBody3D/Pivot" unique_id=1965664731]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_82wna")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="You/CharacterBody3D/Pivot" unique_id=669896951]
+transform = Transform3D(1, 0, 0, 0, 0.46006912, 0, 0, 0, 0.4136588, 0, 1.3817252, -0.48818803)
+mesh = SubResource("BoxMesh_hnff8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="You/CharacterBody3D" unique_id=336707185]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_je4tf")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2091957353]
+transform = Transform3D(0.9338117, 0.13311164, -0.33207986, 0, 0.92820686, 0.3720645, 0.35776493, -0.3474382, 0.86677045, -6.6396027, 5.4998646, 12.310693)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=875285026]
+transform = Transform3D(1, 0, 0, 0, -0.45061272, 0.89271957, 0, -0.89271957, -0.45061272, 0, 4.46383, -9.209612)
+shadow_enabled = true
