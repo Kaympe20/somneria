@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fgabqm57mf4w"
-path.bptc="res://.godot/imported/glasshouse_interior_4k.exr-2ff874a50537e0fded5bcd0431a70cfd.bptc.ctex"
+uid="uid://lq0851ifsllg"
+path.bptc="res://.godot/imported/amsterdam.exr-5d7b8317007dae41ac7db1c6b21c1ec4.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/backgrounds/battle/glasshouse_interior_4k.exr"
-dest_files=["res://.godot/imported/glasshouse_interior_4k.exr-2ff874a50537e0fded5bcd0431a70cfd.bptc.ctex"]
+source_file="res://assets/backgrounds/battle/amsterdam.exr"
+dest_files=["res://.godot/imported/amsterdam.exr-5d7b8317007dae41ac7db1c6b21c1ec4.bptc.ctex"]
 
 [params]
 

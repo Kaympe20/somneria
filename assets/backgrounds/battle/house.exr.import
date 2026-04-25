@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lq0851ifsllg"
-path.bptc="res://.godot/imported/DayEnvironmentHDRI101_4K_HDR.exr-d5d2ee0d589ad677df609180a3120ff0.bptc.ctex"
+uid="uid://fgabqm57mf4w"
+path.bptc="res://.godot/imported/house.exr-faa9489c2adeb25b0cf17bc9ad20677d.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/backgrounds/battle/DayEnvironmentHDRI101_4K_HDR.exr"
-dest_files=["res://.godot/imported/DayEnvironmentHDRI101_4K_HDR.exr-d5d2ee0d589ad677df609180a3120ff0.bptc.ctex"]
+source_file="res://assets/backgrounds/battle/house.exr"
+dest_files=["res://.godot/imported/house.exr-faa9489c2adeb25b0cf17bc9ad20677d.bptc.ctex"]
 
 [params]
 
