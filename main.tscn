@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dq7rlk4asadnt" path="res://scripts/levelLoader.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://5fhlq1be5klv" path="res://assets/mainMenu/bg_placeholder.png" id="2_0xm2m"]
-[ext_resource type="Script" uid="uid://bqjvybtbhwxuh" path="res://scripts/main_ui.gd" id="2_h2yge"]
-[ext_resource type="Texture2D" uid="uid://cjssiq1cqyu4t" path="res://assets/characters/miku/hatsuneMiku.png" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://bqjvybtbhwxuh" path="res://scripts/mainUI.gd" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://cjssiq1cqyu4t" path="res://assets/characters/miku/miku.png" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://dn0wiurjdhawu" path="res://scripts/dialougeBox.gd" id="4_lquwl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ig7tw"]
 font_size = 200
@@ -79,6 +80,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("4_lquwl")
 
 [node name="ColorRect" type="ColorRect" parent="mainUI/dialougeBox" unique_id=1605543391]
 layout_mode = 1
@@ -123,9 +125,10 @@ offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 56
+theme_override_font_sizes/font_size = 42
 text = "Don't do suicide kids; that shit kills you."
 vertical_alignment = 1
+autowrap_mode = 3
 
 [connection signal="pressed" from="mainUI/mainMenu/Buttons/Start" to="mainUI" method="_on_start_pressed"]
 [connection signal="pressed" from="mainUI/mainMenu/Buttons/Quit" to="mainUI" method="_on_quit_pressed"]
