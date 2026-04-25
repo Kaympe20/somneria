@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dq7rlk4asadnt" path="res://scripts/levelLoader.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://5fhlq1be5klv" path="res://assets/mainMenu/bg_placeholder.png" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://bqjvybtbhwxuh" path="res://scripts/main_ui.gd" id="2_h2yge"]
-[ext_resource type="Texture2D" uid="uid://cjssiq1cqyu4t" path="res://assets/characterHeadshots/hatsuneMiku.png" id="4_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://cjssiq1cqyu4t" path="res://assets/characters/miku/hatsuneMiku.png" id="4_1bvp3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ig7tw"]
 font_size = 200
@@ -96,15 +96,15 @@ grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="mainUI/dialougeBox" unique_id=1978774760]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -728.0
-offset_top = -485.0
-offset_right = -406.0
-offset_bottom = -163.0
+anchors_preset = -1
+anchor_left = 0.12100001
+anchor_top = 0.84900004
+anchor_right = 0.12100001
+anchor_bottom = 0.84900004
+offset_left = -0.32000732
+offset_top = -321.92004
+offset_right = 321.68
+offset_bottom = 0.079956055
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("4_1bvp3")
@@ -122,7 +122,10 @@ offset_right = -10.0
 offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Don't do suicide kids; that shit kills you"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 56
+text = "Don't do suicide kids; that shit kills you."
+vertical_alignment = 1
 
 [connection signal="pressed" from="mainUI/mainMenu/Buttons/Start" to="mainUI" method="_on_start_pressed"]
 [connection signal="pressed" from="mainUI/mainMenu/Buttons/Quit" to="mainUI" method="_on_quit_pressed"]

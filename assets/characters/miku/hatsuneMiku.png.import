@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cjssiq1cqyu4t"
-path="res://.godot/imported/hatsuneMiku.png-59fcd9db934534c4d1bba1fcba333abe.ctex"
+path="res://.godot/imported/hatsuneMiku.png-e2d5721b35cb41ed48a9fb485f4bd312.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characterHeadshots/hatsuneMiku.png"
-dest_files=["res://.godot/imported/hatsuneMiku.png-59fcd9db934534c4d1bba1fcba333abe.ctex"]
+source_file="res://assets/characters/miku/hatsuneMiku.png"
+dest_files=["res://.godot/imported/hatsuneMiku.png-e2d5721b35cb41ed48a9fb485f4bd312.ctex"]
 
 [params]
 
