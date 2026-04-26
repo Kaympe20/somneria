@@ -1,6 +1,7 @@
 extends Node3D
 
-@onready var MovingParts: Control = get_node("Intro/MovingParts");
+@onready var MovingParts: Control = get_node("ui/Intro/MovingParts");
+@onready var Intro: Control = get_node("ui/Intro");
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,4 +18,4 @@ func newBattle(backgroundName: String, enemyNames: Array[String]):
 	$WorldEnvironment.environment.sky.sky_material.panorama = load("res://assets/backgrounds/battle/%s.exr" % backgroundName);
 	
 	await MovingParts.finishedIntro;
-	$Intro.hide();
+	Intro.hide();

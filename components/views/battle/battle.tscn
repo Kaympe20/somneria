@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://c2cx2m2py61vc" path="res://components/views/battle/enemies.gd" id="2_ha4bs"]
 [ext_resource type="Script" uid="uid://bapuo20imf482" path="res://components/views/battle/intro.gd" id="4_82wna"]
 [ext_resource type="Texture2D" uid="uid://cjssiq1cqyu4t" path="res://assets/characters/miku/miku.png" id="5_hnff8"]
+[ext_resource type="Script" uid="uid://d4d3ut21h6x3t" path="res://components/views/battle/gridContainer.gd" id="6_hnff8"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ha4bs"]
 panorama = ExtResource("1_0xjgq")
@@ -88,7 +89,10 @@ shadow_enabled = true
 shadow_bias = 0.73
 shadow_opacity = 0.9
 
-[node name="Intro" type="Control" parent="." unique_id=1809714030]
+[node name="ui" type="CanvasLayer" parent="." unique_id=1328586048]
+
+[node name="Intro" type="Control" parent="ui" unique_id=1809714030]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -96,7 +100,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Vignette" type="ColorRect" parent="Intro" unique_id=962077610]
+[node name="Vignette" type="ColorRect" parent="ui/Intro" unique_id=962077610]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -105,20 +109,19 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.78039217)
 
-[node name="MovingParts" type="Control" parent="Intro" unique_id=378179319]
+[node name="MovingParts" type="Control" parent="ui/Intro" unique_id=378179319]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1700.0
-offset_right = 1699.9961
+offset_right = -0.00390625
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_82wna")
 moveSpeed = 140.0
 finishMultiplier = 20.0
 
-[node name="ColorRect" type="ColorRect" parent="Intro/MovingParts" unique_id=543221174]
+[node name="ColorRect" type="ColorRect" parent="ui/Intro/MovingParts" unique_id=543221174]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -132,7 +135,7 @@ offset_bottom = 377.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Intro/MovingParts" unique_id=1186459304]
+[node name="TextureRect" type="TextureRect" parent="ui/Intro/MovingParts" unique_id=1186459304]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.12100001
@@ -147,7 +150,7 @@ grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("5_hnff8")
 
-[node name="Label" type="Label" parent="Intro/MovingParts" unique_id=156833834]
+[node name="Label" type="Label" parent="ui/Intro/MovingParts" unique_id=156833834]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.12100001
@@ -166,7 +169,7 @@ text = "VS"
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Intro/MovingParts" unique_id=1526298473]
+[node name="HBoxContainer" type="HBoxContainer" parent="ui/Intro/MovingParts" unique_id=1526298473]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.12100001
@@ -180,3 +183,85 @@ offset_bottom = 0.079956055
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
+
+[node name="Menu" type="Control" parent="ui" unique_id=890517559]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 82.0
+offset_top = 781.0
+offset_right = -1238.0
+offset_bottom = -99.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="ui/Menu" unique_id=1502454923]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.80784315, 0.84313726, 1, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ui/Menu" unique_id=330716656]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ui/Menu/VBoxContainer" unique_id=1048827491]
+layout_mode = 2
+alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="ui/Menu/VBoxContainer/HBoxContainer" unique_id=736824693]
+layout_mode = 2
+theme_override_constants/h_separation = 34
+theme_override_constants/v_separation = 10
+columns = 2
+script = ExtResource("6_hnff8")
+
+[node name="Label1" type="RichTextLabel" parent="ui/Menu/VBoxContainer/HBoxContainer/GridContainer" unique_id=1010349921]
+custom_minimum_size = Vector2(230, 80)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "Wonderfire"
+horizontal_alignment = 1
+vertical_alignment = 1
+hint_underlined = false
+
+[node name="Label2" type="RichTextLabel" parent="ui/Menu/VBoxContainer/HBoxContainer/GridContainer" unique_id=1139559708]
+custom_minimum_size = Vector2(230, 80)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "Wonderfire"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="RichTextLabel" parent="ui/Menu/VBoxContainer/HBoxContainer/GridContainer" unique_id=137511009]
+custom_minimum_size = Vector2(230, 80)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "Wonderfire"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="RichTextLabel" parent="ui/Menu/VBoxContainer/HBoxContainer/GridContainer" unique_id=1845226227]
+custom_minimum_size = Vector2(230, 80)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "Wonderfire"
+horizontal_alignment = 1
+vertical_alignment = 1
