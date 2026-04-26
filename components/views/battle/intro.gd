@@ -2,6 +2,7 @@ extends Control
 
 signal finishedIntro();
 @export var moveSpeed: float;
+@export var finishMultiplier: float;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,7 +17,15 @@ func _process(delta: float) -> void:
 		position.x += delta *  moveSpeed
 	elif !finished:
 		finished = true;
-		finishedIntro.emit();
+		
+		var secondFinish: bool = false;
+		
+		if position.x < 1700:
+			position.x += delta * moveSpeed * finishMultiplier;
+		elif !secondFinish:
+			secondFinish = true;
+			finishedIntro.emit();
+			
 
 func loadEnemies(enemyNames: Array[String]):
 	assert(enemyNames.size() <= 3, "loadeEnemies() in Intro recieved an array with more than 3 values.");

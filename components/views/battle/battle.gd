@@ -13,9 +13,8 @@ func _process(delta: float) -> void:
 
 func newBattle(backgroundName: String, enemyNames: Array[String]):
 	MovingParts.loadEnemies(enemyNames);
-	
-	await MovingParts.finishedIntro;
-	print("await finished");
-	
 	$Enemies.spawnEnemies(enemyNames);
 	$WorldEnvironment.environment.sky.sky_material.panorama = load("res://assets/backgrounds/battle/%s.exr" % backgroundName);
+	
+	await MovingParts.finishedIntro;
+	$Intro.hide();
