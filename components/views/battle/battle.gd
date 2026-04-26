@@ -1,16 +1,21 @@
 extends Node3D
 
+@onready var MovingParts: Control = get_node("Intro/MovingParts");
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	newBattle()
+	SignalBus.newBattle.connect(newBattle);
+	SignalBus.newBattle.emit("house",["example", "example", "example"] as Array[String]);
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-	
-func intro(enemyNames: Array[String]):
-	pass
 
 func newBattle(backgroundName: String, enemyNames: Array[String]):
+	MovingParts.loadEnemies(enemyNames);
+	
+	await MovingParts.finishedIntro;
+	print("await finished");
+	
 	$Enemies.spawnEnemies(enemyNames);
-	$WorldEnvironment.environment.sky.panorama = load("res://components/characters/%s/%s.tscn" % [backgroundName, backgroundName]);
+	$WorldEnvironment.environment.sky.sky_material.panorama = load("res://assets/backgrounds/battle/%s.exr" % backgroundName);

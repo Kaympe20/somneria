@@ -3,8 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://fgabqm57mf4w" path="res://assets/backgrounds/battle/house.exr" id="1_0xjgq"]
 [ext_resource type="Script" uid="uid://bpcoadg1nx28" path="res://components/views/battle/battle.gd" id="1_qkadb"]
 [ext_resource type="Script" uid="uid://c2cx2m2py61vc" path="res://components/views/battle/enemies.gd" id="2_ha4bs"]
-[ext_resource type="Script" uid="uid://bapuo20imf482" path="res://components/views/battle/intro.gd" id="4_82wna"]
-[ext_resource type="Texture2D" uid="uid://cjssiq1cqyu4t" path="res://assets/characters/miku/miku.png" id="5_hnff8"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ha4bs"]
 panorama = ExtResource("1_0xjgq")
@@ -88,92 +86,10 @@ shadow_enabled = true
 shadow_bias = 0.73
 shadow_opacity = 0.9
 
-[node name="Intro" type="Control" parent="." unique_id=1809714030]
+[node name="intro" type="Control" parent="." unique_id=850373829]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Vignette" type="ColorRect" parent="Intro" unique_id=962077610]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.78039217)
-
-[node name="MovingParts" type="Control" parent="Intro" unique_id=378179319]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("4_82wna")
-moveSpeed = 100.0
-
-[node name="ColorRect" type="ColorRect" parent="Intro/MovingParts" unique_id=543221174]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -728.0
-offset_top = 165.0
-offset_right = 728.0
-offset_bottom = 377.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="Intro/MovingParts" unique_id=1186459304]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.12100001
-anchor_top = 0.84900004
-anchor_right = 0.12100001
-anchor_bottom = 0.84900004
-offset_left = -0.32000732
-offset_top = -321.92004
-offset_right = 321.68
-offset_bottom = 0.079956055
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("5_hnff8")
-
-[node name="Label" type="Label" parent="Intro/MovingParts" unique_id=156833834]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.12100001
-anchor_top = 0.65300006
-anchor_right = 0.87900007
-anchor_bottom = 0.84900004
-offset_left = 345.68
-offset_top = -16.659973
-offset_right = -844.6802
-offset_bottom = 16.660034
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 179
-text = "VS"
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Intro/MovingParts" unique_id=1526298473]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.12100001
-anchor_top = 0.65300006
-anchor_right = 0.87900007
-anchor_bottom = 0.84900004
-offset_left = 610.68
-offset_top = -50.24005
-offset_right = -20.0
-offset_bottom = 0.079956055
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 10
