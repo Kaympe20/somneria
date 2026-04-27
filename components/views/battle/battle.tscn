@@ -141,6 +141,7 @@ layout_mode = 2
 text = "Escape"
 
 [node name="Intro" type="Control" parent="ui" unique_id=1809714030]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -232,4 +233,5 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
+[connection signal="renderMenuItems" from="." to="ui/Menu/GridContainer" method="renderItems"]
 [connection signal="optionSelected" from="ui/Menu/GridContainer" to="." method="_on_option_select"]

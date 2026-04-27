@@ -7,7 +7,7 @@ signal optionSelected(option: int);
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	renderOptions(["Wonderfire", "Wonderfire", "Wonderfire"])
+	pass;
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,10 +26,12 @@ func _process(delta: float) -> void:
 	if amountToMoveBy != Vector2.ZERO:
 		moveUnderline(amountToMoveBy);
 		
-	if Input.is_action_just_pressed("select"):
+	if Input.is_action_just_pressed("ui_accept"):
 		optionSelected.emit(currentIndex);
+	elif Input.is_action_just_pressed("ui_cancel"):
+		optionSelected.emit(4);
 
-func renderOptions(options: Array[String]):
+func renderItems(options: Array[String]):
 	assert(options.size() <= 4, "renderOptions recieved an array with more than 4 values.");
 	numItems = options.size();
 	for index in range(4):
@@ -46,7 +48,6 @@ func renderOptions(options: Array[String]):
 			
 		label.text = text;
 
-#TODO Implement
 func moveUnderline(amountToMoveBy: Vector2): ## Moves the underline by the amount given as a Vector 2, does nothing if the move would be out of bounds
 	var workingIndex = currentIndex;
 	
@@ -61,7 +62,7 @@ func moveUnderline(amountToMoveBy: Vector2): ## Moves the underline by the amoun
 	elif workingIndex < 0:
 		workingIndex = 0;
 	
-	#print("Getting node Label%s" % (workingIndex + 1));
+	print("Getting node Label%s" % (workingIndex + 1));
 	label = get_node("Label%s" % (workingIndex + 1)); # Reassign "label" to new active RichTextLabel
 	
 	label.text = addUnderline(label.text);
@@ -73,4 +74,3 @@ func addUnderline(textToUnderline: String) -> String:
 	
 func convertToIndex(elementPosition: Vector2) -> int: ## Converts from a 2D vector to an integer index indicating which label a Vector2 refers to
 	return elementPosition.x + (elementPosition.y * -2);
-	
