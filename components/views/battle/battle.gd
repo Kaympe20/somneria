@@ -19,3 +19,7 @@ func newBattle(backgroundName: String, enemyNames: Array[String]):
 	
 	await MovingParts.finishedIntro;
 	Intro.hide();
+
+
+func _on_option_select(option: int) -> void:
+	pass # Replace with function body.

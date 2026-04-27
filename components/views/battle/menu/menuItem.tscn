@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://8gqru2aqg5oc"]
+
+[node name="Label1" type="RichTextLabel" unique_id=1718161744]
+custom_minimum_size = Vector2(230, 80)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "Wonderfire"
+horizontal_alignment = 1
+vertical_alignment = 1
+hint_underlined = false

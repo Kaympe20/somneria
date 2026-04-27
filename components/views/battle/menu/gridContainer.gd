@@ -1,6 +1,8 @@
 extends GridContainer
 
 var currentIndex: int = 0;
+var numItems: int;
+signal optionSelected(option: int);
 
 
 # Called when the node enters the scene tree for the first time.
@@ -23,15 +25,18 @@ func _process(delta: float) -> void:
 		
 	if amountToMoveBy != Vector2.ZERO:
 		moveUnderline(amountToMoveBy);
+		if Input.is_action_just_pressed("select"):
+			optionSelected.emit(currentIndex);
 
 func renderOptions(options: Array[String]):
 	assert(options.size() <= 4, "renderOptions recieved an array with more than 4 values.");
+	numItems = options.size();
 	for index in range(4):
 		
 		var text: String;
 		var label: RichTextLabel = get_node("Label%s" % str(index + 1));
 		
-		if (index < options.size()):
+		if (index < numItems):
 			text = options[index];
 			if index == 0:
 				text = addUnderline(text);
@@ -50,8 +55,8 @@ func moveUnderline(amountToMoveBy: Vector2): ## Moves the underline by the amoun
 	print("current index is %s and index to move by is %s" % [workingIndex, convertToIndex(amountToMoveBy)]);
 	workingIndex += convertToIndex(amountToMoveBy);
 	
-	if workingIndex > 3:
-		workingIndex = 3;
+	if workingIndex > numItems - 1:
+		workingIndex = numItems - 1;
 	elif workingIndex < 0:
 		workingIndex = 0;
 	
