@@ -26,7 +26,7 @@ func loadLevel(levelIdentifier):
 		if levelIdentifier != 0:
 			levelNumber = levelIdentifier;
 		unloadLevel();
-		SignalBus.mainMenuHide.emit();
+		Bus.mainMenuHide.emit();
 		var levelPath : String
 		
 		levelPath = "res://scenes/levels/scn%s.tscn" % str(levelNumber);
@@ -44,9 +44,9 @@ func loadLevel(levelIdentifier):
 		push_error("Function loadLevel() recieved a type that was not an int or String");
 		
 func _ready() -> void:
-	SignalBus.returnToReality.connect(loadBedroom);
-	SignalBus.loadLevel.connect(loadLevel);
-	SignalBus.gameStart.connect(loadBedroom);
+	Bus.returnToReality.connect(loadBedroom);
+	Bus.loadLevel.connect(loadLevel);
+	Bus.gameStart.connect(loadBedroom);
 
 func loadBedroom():
 	loadLevel("bedroom");

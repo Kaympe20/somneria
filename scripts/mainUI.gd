@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 func _on_start_pressed() -> void:
-	SignalBus.gameStart.emit();
+	Bus.gameStart.emit();
 	hide();
 	
 # Called when the node enters the scene tree for the first time.
