@@ -1,6 +1,6 @@
 extends GridContainer
 
-var currentUnderlinePosition: Vector2 = Vector2.ZERO;
+var currentIndex: int = 0;
 
 
 # Called when the node enters the scene tree for the first time.
@@ -42,19 +42,18 @@ func renderOptions(options: Array[String]):
 
 #TODO Implement
 func moveUnderline(amountToMoveBy: Vector2): ## Moves the underline by the amount given as a Vector 2, does nothing if the move would be out of bounds
-	var workingIndex = convertToIndex(currentUnderlinePosition);
 	
-	var label: RichTextLabel = get_node("Label%s" % (workingIndex + 1));
+	var label: RichTextLabel = get_node("Label%s" % (currentIndex + 1));
 	label.text = label.get_parsed_text(); # Clear underline
 	
-	print("current index is %s and index to move by is %s" % [workingIndex, convertToIndex(amountToMoveBy)]);
-	workingIndex += convertToIndex(amountToMoveBy);
+	print("current index is %s and index to move by is %s" % [currentIndex, convertToIndex(amountToMoveBy)]);
+	currentIndex += convertToIndex(amountToMoveBy);
 	
-	if workingIndex > 3:
-		workingIndex = 3;
+	if currentIndex > 3:
+		currentIndex = 3;
 	
-	print("Getting node Label%s" % (workingIndex + 1));
-	label = get_node("Label%s" % (workingIndex + 1)); # Reassign "label" to new active RichTextLabel
+	print("Getting node Label%s" % (currentIndex + 1));
+	label = get_node("Label%s" % (currentIndex + 1)); # Reassign "label" to new active RichTextLabel
 	
 	label.text = addUnderline(label.text);
 	
