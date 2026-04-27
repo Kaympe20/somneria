@@ -12,13 +12,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var amountToMoveBy: Vector2 = Vector2.ZERO;
 	
-	if Input.is_action_pressed("right"):
+	if Input.is_action_just_pressed("right"):
 		amountToMoveBy.x += 1;
-	if Input.is_action_pressed("left"):
+	if Input.is_action_just_pressed("left"):
 		amountToMoveBy.x -= 1;
-	if Input.is_action_pressed("forward"):
+	if Input.is_action_just_pressed("forward"):
 		amountToMoveBy.y += 1;
-	if Input.is_action_pressed("back"):
+	if Input.is_action_just_pressed("back"):
 		amountToMoveBy.y -= 1;
 		
 	if amountToMoveBy != Vector2.ZERO:
@@ -42,20 +42,25 @@ func renderOptions(options: Array[String]):
 
 #TODO Implement
 func moveUnderline(amountToMoveBy: Vector2): ## Moves the underline by the amount given as a Vector 2, does nothing if the move would be out of bounds
+	var workingIndex = currentIndex;
 	
-	var label: RichTextLabel = get_node("Label%s" % (currentIndex + 1));
+	var label: RichTextLabel = get_node("Label%s" % (workingIndex + 1));
 	label.text = label.get_parsed_text(); # Clear underline
 	
-	print("current index is %s and index to move by is %s" % [currentIndex, convertToIndex(amountToMoveBy)]);
-	currentIndex += convertToIndex(amountToMoveBy);
+	print("current index is %s and index to move by is %s" % [workingIndex, convertToIndex(amountToMoveBy)]);
+	workingIndex += convertToIndex(amountToMoveBy);
 	
-	if currentIndex > 3:
-		currentIndex = 3;
+	if workingIndex > 3:
+		workingIndex = 3;
+	elif workingIndex < 0:
+		workingIndex = 0;
 	
-	print("Getting node Label%s" % (currentIndex + 1));
-	label = get_node("Label%s" % (currentIndex + 1)); # Reassign "label" to new active RichTextLabel
+	print("Getting node Label%s" % (workingIndex + 1));
+	label = get_node("Label%s" % (workingIndex + 1)); # Reassign "label" to new active RichTextLabel
 	
 	label.text = addUnderline(label.text);
+	
+	currentIndex = workingIndex;
 	
 func addUnderline(textToUnderline: String) -> String:
 	return "[u]%s[/u]" % textToUnderline;
