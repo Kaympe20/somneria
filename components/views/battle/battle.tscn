@@ -92,8 +92,55 @@ shadow_opacity = 0.9
 
 [node name="ui" type="CanvasLayer" parent="." unique_id=1328586048]
 
+[node name="Menu" type="Control" parent="ui" unique_id=890517559]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 82.0
+offset_top = 781.0
+offset_right = -1238.0
+offset_bottom = -99.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="ui/Menu" unique_id=1502454923]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.80784315, 0.84313726, 1, 1)
+
+[node name="GridContainer" type="GridContainer" parent="ui/Menu" unique_id=736824693]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 15.0
+offset_right = 547.0
+offset_bottom = 185.0
+theme_override_constants/h_separation = 34
+theme_override_constants/v_separation = 10
+columns = 2
+script = ExtResource("6_hnff8")
+
+[node name="Label1" parent="ui/Menu/GridContainer" unique_id=1718161744 instance=ExtResource("7_je4tf")]
+layout_mode = 2
+text = "Attack"
+
+[node name="Label2" parent="ui/Menu/GridContainer" unique_id=1149724740 instance=ExtResource("7_je4tf")]
+layout_mode = 2
+text = "Items"
+
+[node name="Label3" parent="ui/Menu/GridContainer" unique_id=1027034952 instance=ExtResource("7_je4tf")]
+layout_mode = 2
+text = "Special"
+
+[node name="Label4" parent="ui/Menu/GridContainer" unique_id=269701084 instance=ExtResource("7_je4tf")]
+layout_mode = 2
+text = "Escape"
+
 [node name="Intro" type="Control" parent="ui" unique_id=1809714030]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -184,53 +231,5 @@ offset_bottom = 0.079956055
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
-
-[node name="Menu" type="Control" parent="ui" unique_id=890517559]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 82.0
-offset_top = 781.0
-offset_right = -1238.0
-offset_bottom = -99.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="ui/Menu" unique_id=1502454923]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.80784315, 0.84313726, 1, 1)
-
-[node name="GridContainer" type="GridContainer" parent="ui/Menu" unique_id=736824693]
-layout_mode = 0
-offset_left = 53.0
-offset_top = 15.0
-offset_right = 547.0
-offset_bottom = 185.0
-theme_override_constants/h_separation = 34
-theme_override_constants/v_separation = 10
-columns = 2
-script = ExtResource("6_hnff8")
-
-[node name="Label1" parent="ui/Menu/GridContainer" unique_id=1718161744 instance=ExtResource("7_je4tf")]
-layout_mode = 2
-text = "Attack"
-
-[node name="Label2" parent="ui/Menu/GridContainer" unique_id=1149724740 instance=ExtResource("7_je4tf")]
-layout_mode = 2
-text = "Items"
-
-[node name="Label3" parent="ui/Menu/GridContainer" unique_id=1027034952 instance=ExtResource("7_je4tf")]
-layout_mode = 2
-text = "Special"
-
-[node name="Label4" parent="ui/Menu/GridContainer" unique_id=269701084 instance=ExtResource("7_je4tf")]
-layout_mode = 2
-text = "Escape"
 
 [connection signal="optionSelected" from="ui/Menu/GridContainer" to="." method="_on_option_select"]

@@ -25,8 +25,9 @@ func _process(delta: float) -> void:
 		
 	if amountToMoveBy != Vector2.ZERO:
 		moveUnderline(amountToMoveBy);
-		if Input.is_action_just_pressed("select"):
-			optionSelected.emit(currentIndex);
+		
+	if Input.is_action_just_pressed("select"):
+		optionSelected.emit(currentIndex);
 
 func renderOptions(options: Array[String]):
 	assert(options.size() <= 4, "renderOptions recieved an array with more than 4 values.");
@@ -60,7 +61,7 @@ func moveUnderline(amountToMoveBy: Vector2): ## Moves the underline by the amoun
 	elif workingIndex < 0:
 		workingIndex = 0;
 	
-	print("Getting node Label%s" % (workingIndex + 1));
+	#print("Getting node Label%s" % (workingIndex + 1));
 	label = get_node("Label%s" % (workingIndex + 1)); # Reassign "label" to new active RichTextLabel
 	
 	label.text = addUnderline(label.text);

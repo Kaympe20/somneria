@@ -22,4 +22,4 @@ func newBattle(backgroundName: String, enemyNames: Array[String]):
 
 
 func _on_option_select(option: int) -> void:
-	pass # Replace with function body.
+	print("optionSelected(%s) recieved" % option);
