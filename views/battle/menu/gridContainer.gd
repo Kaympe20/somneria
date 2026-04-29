@@ -39,11 +39,17 @@ func _process(delta: float) -> void:
 func renderItems(options: Array[String]):
 	assert(options.size() <= 4, "renderOptions recieved an array with more than 4 values.");
 	numItems = options.size();
+	
+	for child in get_children():
+		remove_child(child)
+		child.queue_free();
+		
 	for index in range(numItems):
 		
 		var text: String;
 		
 		var label: RichTextLabel = labelScene.instantiate();
+		
 		label.name = "Label%s" % str(index + 1);
 		
 		text = options[index];
