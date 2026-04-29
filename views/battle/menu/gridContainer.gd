@@ -5,9 +5,6 @@ var numItems: int;
 
 signal optionSelected(option: int);
 
-var isConfirmation: bool = false;
-signal confirmationStatusUpdate(isConfirmation: bool);
-
 @export var labelScene: PackedScene;
 
 # Called when the node enters the scene tree for the first time.

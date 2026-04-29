@@ -1,6 +1,11 @@
+#TODO Refactor into "Menu" node for improved code clarity
+
 extends Node3D
 
 signal renderMenuItems(options: Array[String]);
+
+var isConfirmation: bool = false;
+signal confirmationRequested(confirmationAction: String);
 
 enum menuScreens {
 	main,
@@ -29,6 +34,7 @@ func _process(delta: float) -> void:
 			menuScreens.attack: itemsToRender = PlayerData.getAttacks();
 			
 		displayedMenuScreen = currentMenuScreen;
+		renderMenuItems.emit(itemsToRender);
 
 func newBattle(backgroundName: String, enemyNames: Array[String]):
 	renderMenuItems.emit(["Attack", "Items", "Special", "Escape"] as Array[String]);
@@ -54,3 +60,8 @@ func _on_option_select(option: int) -> void:
 			1: currentMenuScreen = menuScreens.items;
 			2: currentMenuScreen = menuScreens.special;
 			3: currentMenuScreen = menuScreens.escape;
+			
+func runConfirmation(thingToConfirm: String):
+	assert(!isConfirmation, "error running runConfirmation(): isConfirmation is already true");
+	isConfirmation = true;
+	confirmationRequested.emit(thingToConfirm);

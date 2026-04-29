@@ -121,11 +121,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = -10
 alignment = 1
 
 [node name="Label" type="Label" parent="ui/Menu/VBoxContainer" unique_id=775182786]
+visible = false
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
-text = "test"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Are you sure you want to <InsertActionHere>?"
+horizontal_alignment = 1
+vertical_alignment = 1
 script = ExtResource("4_twn4g")
 
 [node name="Menu" type="GridContainer" parent="ui/Menu/VBoxContainer" unique_id=736824693]
@@ -231,5 +238,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
+[connection signal="confirmationRequested" from="." to="ui/Menu/VBoxContainer/Label" method="_on_confirmation_requested"]
 [connection signal="renderMenuItems" from="." to="ui/Menu/VBoxContainer/Menu" method="renderItems"]
 [connection signal="optionSelected" from="ui/Menu/VBoxContainer/Menu" to="." method="_on_option_select"]
