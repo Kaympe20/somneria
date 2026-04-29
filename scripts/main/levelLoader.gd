@@ -15,7 +15,7 @@ func loadLevel(levelIdentifier):
 		
 		var levelPath: String;
 		
-		levelPath = "res://scenes/%s/%s.tscn" % [levelIdentifier, levelIdentifier]
+		levelPath = "res://environments/%s/%s.tscn" % [levelIdentifier, levelIdentifier]
 		
 		var levelResource : PackedScene = load(levelPath);
 		
