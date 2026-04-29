@@ -26,6 +26,7 @@ func _process(delta: float) -> void:
 		var itemsToRender: Array[String];
 		match currentMenuScreen:
 			menuScreens.main: itemsToRender = ["Attack", "Items", "Special", "Escape"] as Array[String];
+			menuScreens.attack: itemsToRender = PlayerData.getAttacks();
 			
 		displayedMenuScreen = currentMenuScreen;
 

@@ -2,8 +2,13 @@ extends GridContainer
 
 var currentIndex: int = 0;
 var numItems: int;
+
 signal optionSelected(option: int);
 
+var isConfirmation: bool = false;
+signal confirmationStatusUpdate(isConfirmation: bool);
+
+@export var labelScene: PackedScene;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -34,19 +39,23 @@ func _process(delta: float) -> void:
 func renderItems(options: Array[String]):
 	assert(options.size() <= 4, "renderOptions recieved an array with more than 4 values.");
 	numItems = options.size();
-	for index in range(4):
+	for index in range(numItems):
 		
 		var text: String;
-		var label: RichTextLabel = get_node("Label%s" % str(index + 1));
 		
-		if (index < numItems):
-			text = options[index];
-			if index == 0:
-				text = addUnderline(text);
-		else:
-			text = "";
+		var label: RichTextLabel = labelScene.instantiate();
+		label.name = "Label%s" % str(index + 1);
+		
+		text = options[index];
+		
+		if index == 0:
+			text = addUnderline(text);
 			
 		label.text = text;
+		
+		add_child(label);
+		
+		print("Label \"%s\" created with value %s." % [label.name, label.text]);
 
 func moveUnderline(amountToMoveBy: Vector2): ## Moves the underline by the amount given as a Vector 2, does nothing if the move would be out of bounds
 	var workingIndex = currentIndex;

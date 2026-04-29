@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://blxcjud6ji8nr"]
 
-[ext_resource type="Script" uid="uid://dq7rlk4asadnt" path="res://scripts/levelLoader.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://dq7rlk4asadnt" path="res://scripts/main/levelLoader.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://5fhlq1be5klv" path="res://assets/mainMenu/bg_placeholder.png" id="2_0xm2m"]
-[ext_resource type="Script" uid="uid://bqjvybtbhwxuh" path="res://scripts/mainUI.gd" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://bqjvybtbhwxuh" path="res://scripts/main/mainUI.gd" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://cjssiq1cqyu4t" path="res://assets/characters/miku/miku.png" id="4_1bvp3"]
-[ext_resource type="Script" uid="uid://dn0wiurjdhawu" path="res://scripts/dialougeBox.gd" id="4_lquwl"]
+[ext_resource type="Script" uid="uid://dn0wiurjdhawu" path="res://scripts/main/dialougeBox.gd" id="4_lquwl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ig7tw"]
 font_size = 200

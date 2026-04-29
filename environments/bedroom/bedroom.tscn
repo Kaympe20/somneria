@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d23qtd8ojimrk"]
 
-[ext_resource type="PackedScene" uid="uid://csbngv28gx0ml" path="res://components/views/thirdPerson/thirdPerson.tscn" id="1_5gqdm"]
+[ext_resource type="PackedScene" uid="uid://csbngv28gx0ml" path="res://views/thirdPerson/thirdPerson.tscn" id="1_3y7ir"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5gqdm"]
 size = Vector3(60, 1, 60)
@@ -20,7 +20,7 @@ shape = SubResource("BoxShape3D_5gqdm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh = SubResource("BoxMesh_v4gs4")
 
-[node name="ThirdPerson" parent="." unique_id=1491157744 instance=ExtResource("1_5gqdm")]
+[node name="ThirdPerson" parent="." unique_id=1491157744 instance=ExtResource("1_3y7ir")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=381598896]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 21, 0)
