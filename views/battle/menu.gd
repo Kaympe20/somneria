@@ -58,7 +58,7 @@ func runConfirmation(thingToConfirm: String):
 	
 	assert(!isConfirmation, "error running runConfirmation(): isConfirmation is already true");
 	isConfirmation = true;
-	confirmationRequested.emit("Are you sure you would like to %s %s?" % [confirmationType, thingToConfirm]);
+	confirmationRequested.emit("%s \"%s\"" % [confirmationType, thingToConfirm]);
  
 func endConfirmation():
 	isConfirmation = false;
