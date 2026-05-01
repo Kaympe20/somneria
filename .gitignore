@@ -3,5 +3,5 @@
 logs/
 .godot/
 addons/
-.vscode/
+.vscode/.code-workspace
 *.tmp
