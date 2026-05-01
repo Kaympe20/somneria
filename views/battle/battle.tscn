@@ -4,9 +4,11 @@
 [ext_resource type="Script" uid="uid://bpcoadg1nx28" path="res://views/battle/battle.gd" id="1_qkadb"]
 [ext_resource type="Script" uid="uid://c2cx2m2py61vc" path="res://views/battle/enemies.gd" id="2_ha4bs"]
 [ext_resource type="Script" uid="uid://bapuo20imf482" path="res://views/battle/intro.gd" id="4_82wna"]
+[ext_resource type="Script" uid="uid://bhreqc3ga783a" path="res://views/battle/menu.gd" id="4_rwkki"]
 [ext_resource type="Script" uid="uid://bgtcyv1qpbrfq" path="res://views/battle/label.gd" id="4_twn4g"]
+[ext_resource type="Script" uid="uid://bbvdowujbw4e6" path="res://views/battle/menuContainer.gd" id="4_xyd4w"]
 [ext_resource type="Texture2D" uid="uid://cjssiq1cqyu4t" path="res://assets/characters/miku/miku.png" id="5_hnff8"]
-[ext_resource type="Script" uid="uid://d4d3ut21h6x3t" path="res://views/battle/menu/gridContainer.gd" id="6_hnff8"]
+[ext_resource type="Script" uid="uid://d4d3ut21h6x3t" path="res://views/battle/menu/menuItems.gd" id="6_hnff8"]
 [ext_resource type="PackedScene" uid="uid://8gqru2aqg5oc" path="res://views/battle/menu/menuItem.tscn" id="7_je4tf"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ha4bs"]
@@ -83,7 +85,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_je4tf")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=2091957353]
-transform = Transform3D(0.9338117, 0.13311163, -0.33207986, 0, 0.92820686, 0.37206453, 0.35776493, -0.3474382, 0.86677045, -6.6396027, 5.4998646, 12.310693)
+transform = Transform3D(0.9927321, -0.044776052, 0.111704886, 0, 0.9282068, 0.3720645, -0.12034485, -0.36936036, 0.92146075, -1.6059322, 3.2394838, 12.310693)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=875285026]
 transform = Transform3D(1, 0, 0, 0, -0.45061272, 0.89271957, 0, -0.89271957, -0.45061272, 0, 4.46383, -9.209612)
@@ -93,7 +95,7 @@ shadow_opacity = 0.9
 
 [node name="ui" type="CanvasLayer" parent="." unique_id=1328586048]
 
-[node name="Menu" type="Control" parent="ui" unique_id=890517559]
+[node name="MenuContainer" type="Control" parent="ui" unique_id=890517559]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -104,8 +106,9 @@ offset_right = -1238.0
 offset_bottom = -99.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("4_xyd4w")
 
-[node name="ColorRect" type="ColorRect" parent="ui/Menu" unique_id=1502454923]
+[node name="ColorRect" type="ColorRect" parent="ui/MenuContainer" unique_id=1502454923]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -114,21 +117,32 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.80784315, 0.84313726, 1, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ui/Menu" unique_id=2042993996]
+[node name="Menu" type="VBoxContainer" parent="ui/MenuContainer" unique_id=2042993996]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 50.0
+offset_right = -50.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = -10
 alignment = 1
+script = ExtResource("4_rwkki")
 
-[node name="Label" type="Label" parent="ui/Menu/VBoxContainer" unique_id=775182786]
+[node name="ConfirmationText" type="Label" parent="ui/MenuContainer/Menu" unique_id=775182786]
+visible = false
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-text = "test"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Are you sure you want to <InsertActionHere>?"
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 3
 script = ExtResource("4_twn4g")
 
-[node name="Menu" type="GridContainer" parent="ui/Menu/VBoxContainer" unique_id=736824693]
+[node name="MenuItems" type="GridContainer" parent="ui/MenuContainer/Menu" unique_id=736824693]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
@@ -139,7 +153,6 @@ script = ExtResource("6_hnff8")
 labelScene = ExtResource("7_je4tf")
 
 [node name="Intro" type="Control" parent="ui" unique_id=1809714030]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -231,5 +244,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[connection signal="renderMenuItems" from="." to="ui/Menu/VBoxContainer/Menu" method="renderItems"]
-[connection signal="optionSelected" from="ui/Menu/VBoxContainer/Menu" to="." method="_on_option_select"]
+[connection signal="confirmationEnded" from="ui/MenuContainer/Menu" to="ui/MenuContainer/Menu/ConfirmationText" method="_on_confirmation_ended"]
+[connection signal="confirmationRequested" from="ui/MenuContainer/Menu" to="ui/MenuContainer/Menu/ConfirmationText" method="_on_confirmation_requested"]
+[connection signal="confirmationRequested" from="ui/MenuContainer/Menu" to="ui/MenuContainer/Menu/MenuItems" method="_on_confirmation_request"]
+[connection signal="playerMove" from="ui/MenuContainer/Menu" to="ui/MenuContainer" method="_on_menu_player_move"]
+[connection signal="renderMenuItems" from="ui/MenuContainer/Menu" to="ui/MenuContainer/Menu/MenuItems" method="renderItems"]
+[connection signal="optionSelected" from="ui/MenuContainer/Menu/MenuItems" to="ui/MenuContainer/Menu" method="_on_option_select"]

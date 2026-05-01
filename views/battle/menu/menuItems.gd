@@ -5,9 +5,6 @@ var numItems: int;
 
 signal optionSelected(option: int);
 
-var isConfirmation: bool = false;
-signal confirmationStatusUpdate(isConfirmation: bool);
-
 @export var labelScene: PackedScene;
 
 # Called when the node enters the scene tree for the first time.
@@ -37,7 +34,8 @@ func _process(delta: float) -> void:
 		optionSelected.emit(4);
 
 func renderItems(options: Array[String]):
-	assert(options.size() <= 4, "renderOptions recieved an array with more than 4 values.");
+	currentIndex = 0;
+	assert(options.size() <= 4, "renderOptions received an array with more than 4 values.");
 	numItems = options.size();
 	
 	for child in get_children():
@@ -89,3 +87,6 @@ func addUnderline(textToUnderline: String) -> String:
 	
 func convertToIndex(elementPosition: Vector2) -> int: ## Converts from a 2D vector to an integer index indicating which label a Vector2 refers to
 	return elementPosition.x + (elementPosition.y * -2);
+
+func _on_confirmation_request(confirmationAction: String) -> void:
+	renderItems(["Yes", "No"]);
