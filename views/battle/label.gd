@@ -13,3 +13,7 @@ extends Label
 func _on_confirmation_requested(confirmationAction: String) -> void:
 	text = "Are you sure you want to %s?" % confirmationAction;
 	show();
+
+
+func _on_confirmation_ended() -> void:
+	hide();
