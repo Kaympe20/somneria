@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://c1e2tqv1bvagr"]
+
+[ext_resource type="Texture2D" uid="uid://bufjvfgnj567g" path="res://assets/images/hands/hands1.png" id="1_poq3c"]
+[ext_resource type="Texture2D" uid="uid://dowfg6sdhvpdv" path="res://assets/images/hands/hands2.png" id="2_cjvqu"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_asge3"]
+frames = 2
+frame_0/texture = ExtResource("1_poq3c")
+frame_0/duration = 0.1
+frame_1/texture = ExtResource("2_cjvqu")
+frame_1/duration = 0.1
+
+[node name="AbsurdityCheck" type="Control" unique_id=522763967]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=114204621]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AnimatedTexture_asge3")

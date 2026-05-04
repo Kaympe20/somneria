@@ -5,6 +5,9 @@
 [ext_resource type="Script" uid="uid://bqjvybtbhwxuh" path="res://scripts/main/mainUI.gd" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://cjssiq1cqyu4t" path="res://assets/characters/miku/miku.png" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://dn0wiurjdhawu" path="res://scripts/main/dialougeBox.gd" id="4_lquwl"]
+[ext_resource type="PackedScene" uid="uid://c1e2tqv1bvagr" path="res://components/absurdityCheck/absurdityCheck.tscn" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://c8b1fm5ybb1yt" path="res://epilepsy_warning.gd" id="7_5vw27"]
+[ext_resource type="Texture2D" uid="uid://lp4u6sspnks6" path="res://assets/images/epilepsyWarning/epilepsyWarning.png" id="7_272bh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ig7tw"]
 font_size = 200
@@ -73,6 +76,9 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "Quit"
 
+[node name="absurdityCheck" parent="mainUI" unique_id=522763967 instance=ExtResource("6_7mycd")]
+visible = false
+
 [node name="dialougeBox" type="Control" parent="mainUI" unique_id=2057501396]
 visible = false
 layout_mode = 3
@@ -120,5 +126,30 @@ text = "Don't do suicide kids; that shit kills you."
 vertical_alignment = 1
 autowrap_mode = 3
 
+[node name="epilepsyWarning" type="Control" parent="mainUI" unique_id=761675019]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_5vw27")
+
+[node name="warningShowTimer" type="Timer" parent="mainUI/epilepsyWarning" unique_id=1930902410]
+wait_time = 20.0
+one_shot = true
+autostart = true
+
+[node name="TextureRect" type="TextureRect" parent="mainUI/epilepsyWarning" unique_id=904937890]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_272bh")
+
 [connection signal="pressed" from="mainUI/mainMenu/Buttons/Start" to="mainUI" method="_on_start_pressed"]
 [connection signal="pressed" from="mainUI/mainMenu/Buttons/Quit" to="mainUI" method="_on_quit_pressed"]
+[connection signal="timeout" from="mainUI/epilepsyWarning/warningShowTimer" to="mainUI/epilepsyWarning" method="_on_warning_show_timer_timeout"]
