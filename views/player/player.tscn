@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://csbngv28gx0ml"]
 
-[ext_resource type="Script" uid="uid://bkru4wk781xlw" path="res://views/thirdPerson/third_person.gd" id="1_08oh2"]
+[ext_resource type="Script" uid="uid://bkru4wk781xlw" path="res://views/player/player.gd" id="1_08oh2"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3xv07"]
 
@@ -11,7 +11,7 @@ material = SubResource("StandardMaterial3D_08oh2")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_08oh2"]
 
-[node name="ThirdPerson" type="CharacterBody3D" unique_id=1491157744]
+[node name="Player" type="CharacterBody3D" unique_id=1491157744]
 script = ExtResource("1_08oh2")
 
 [node name="Pivot" type="Node3D" parent="." unique_id=1026410499]
