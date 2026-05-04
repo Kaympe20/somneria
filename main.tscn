@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bqjvybtbhwxuh" path="res://scripts/main/mainUI.gd" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://cjssiq1cqyu4t" path="res://assets/characters/miku/miku.png" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://dn0wiurjdhawu" path="res://scripts/main/dialougeBox.gd" id="4_lquwl"]
+[ext_resource type="Script" uid="uid://be85vx7u1vuyl" path="res://components/absurdityCheck/absurdityCheck.gd" id="5_kek77"]
 [ext_resource type="PackedScene" uid="uid://c1e2tqv1bvagr" path="res://components/absurdityCheck/absurdityCheck.tscn" id="6_7mycd"]
 [ext_resource type="Script" uid="uid://c8b1fm5ybb1yt" path="res://epilepsy_warning.gd" id="7_5vw27"]
 [ext_resource type="Texture2D" uid="uid://lp4u6sspnks6" path="res://assets/images/epilepsyWarning/epilepsyWarning.png" id="7_272bh"]
@@ -78,6 +79,7 @@ text = "Quit"
 
 [node name="absurdityCheck" parent="mainUI" unique_id=522763967 instance=ExtResource("6_7mycd")]
 visible = false
+script = ExtResource("5_kek77")
 
 [node name="dialougeBox" type="Control" parent="mainUI" unique_id=2057501396]
 visible = false
@@ -151,5 +153,6 @@ grow_vertical = 2
 texture = ExtResource("7_272bh")
 
 [connection signal="pressed" from="mainUI/mainMenu/Buttons/Start" to="mainUI" method="_on_start_pressed"]
+[connection signal="pressed" from="mainUI/mainMenu/Buttons/Start" to="mainUI/absurdityCheck" method="_on_start_pressed"]
 [connection signal="pressed" from="mainUI/mainMenu/Buttons/Quit" to="mainUI" method="_on_quit_pressed"]
 [connection signal="timeout" from="mainUI/epilepsyWarning/warningShowTimer" to="mainUI/epilepsyWarning" method="_on_warning_show_timer_timeout"]
