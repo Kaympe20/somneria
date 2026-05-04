@@ -1,18 +1,14 @@
-extends CanvasLayer
+extends Control
 
-func _on_start_pressed() -> void:
-	Bus.gameStart.emit();
-	hide();
-	
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
-
+	show();
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
 
-func _on_quit_pressed() -> void:
-	get_tree().quit();
+func _on_warning_show_timer_timeout() -> void:
+	hide();

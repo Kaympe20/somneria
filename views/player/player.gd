@@ -8,12 +8,20 @@ extends CharacterBody3D
 
 @onready var _camera_pivot: Node3D = $CameraPivot;
 
+@export var firstPerson: bool = false;
+
 
 var targetVelocity = Vector3.ZERO;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	if firstPerson:
+		var SpringArm: SpringArm3D = get_node("CameraPivot/SpringArm3D");
+		SpringArm.spring_length = 0;
+		
+		$Pivot.hide();
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
