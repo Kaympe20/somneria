@@ -7,5 +7,4 @@ signal newDialouge(character: String, dialouge: String);
 signal updateDialouge(dialouge: String);
 signal newBattle(backgroundName: String, enemyNames: Array[String]);
 signal playerAbsurdityCheck();
-signal absurdityLevelNeeded();
-signal absurdityLevel();
+signal absurdityLevel(callback: Callable);
