@@ -30,9 +30,6 @@ func _process(delta: float) -> void:
 		
 #		print("show")
 	else:
-		print(Input.is_action_pressed("show_level"))
-		print(main.activeView())
-		
 		hide()
 
 func absurdityLevel(callback: Callable):
