@@ -1,5 +1,5 @@
 extends CharacterBody3D
-class_name enemy
+class_name Enemy
 
 var attacks: Array[attack];
 

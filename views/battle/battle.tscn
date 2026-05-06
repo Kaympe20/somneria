@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://fgabqm57mf4w" path="res://assets/backgrounds/battle/house.exr" id="1_0xjgq"]
 [ext_resource type="Script" uid="uid://bpcoadg1nx28" path="res://views/battle/battle.gd" id="1_qkadb"]
 [ext_resource type="Script" uid="uid://c2cx2m2py61vc" path="res://views/battle/enemies.gd" id="2_ha4bs"]
+[ext_resource type="PackedScene" uid="uid://v7icokt0kys0" path="res://components/enemies/ball/worst_ball_bounce_ever.tscn" id="2_jchgc"]
 [ext_resource type="Script" uid="uid://bapuo20imf482" path="res://views/battle/intro.gd" id="4_82wna"]
 [ext_resource type="Script" uid="uid://bhreqc3ga783a" path="res://views/battle/menu.gd" id="4_rwkki"]
 [ext_resource type="Script" uid="uid://bgtcyv1qpbrfq" path="res://views/battle/label.gd" id="4_twn4g"]
@@ -10,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cjssiq1cqyu4t" path="res://assets/characters/miku/miku.png" id="5_hnff8"]
 [ext_resource type="Script" uid="uid://d4d3ut21h6x3t" path="res://views/battle/menu/menuItems.gd" id="6_hnff8"]
 [ext_resource type="PackedScene" uid="uid://8gqru2aqg5oc" path="res://views/battle/menu/menuItem.tscn" id="7_je4tf"]
+[ext_resource type="Script" uid="uid://sqbydkxygtn" path="res://views/battle/introContainer.gd" id="9_yd87w"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ha4bs"]
 panorama = ExtResource("1_0xjgq")
@@ -38,6 +40,7 @@ material = SubResource("StandardMaterial3D_0xjgq")
 
 [node name="battle" type="Node3D" unique_id=296885428]
 script = ExtResource("1_qkadb")
+enemyScenes = Array[PackedScene]([ExtResource("2_jchgc")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2076236578]
 environment = SubResource("Environment_5vs1m")
@@ -159,6 +162,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("9_yd87w")
 
 [node name="Vignette" type="ColorRect" parent="ui/Intro" unique_id=962077610]
 layout_mode = 1
@@ -250,3 +254,4 @@ theme_override_constants/separation = 10
 [connection signal="playerMove" from="ui/MenuContainer/Menu" to="ui/MenuContainer" method="_on_menu_player_move"]
 [connection signal="renderMenuItems" from="ui/MenuContainer/Menu" to="ui/MenuContainer/Menu/MenuItems" method="renderItems"]
 [connection signal="optionSelected" from="ui/MenuContainer/Menu/MenuItems" to="ui/MenuContainer/Menu" method="_on_option_select"]
+[connection signal="finishedIntro" from="ui/Intro/MovingParts" to="ui/Intro" method="_on_finished_intro"]
