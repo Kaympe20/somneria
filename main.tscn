@@ -1,16 +1,18 @@
 [gd_scene format=3 uid="uid://blxcjud6ji8nr"]
 
+[ext_resource type="Script" uid="uid://bo3snyhg5nqj8" path="res://main.gd" id="1_dg77c"]
 [ext_resource type="Script" uid="uid://dq7rlk4asadnt" path="res://scripts/main/levelLoader.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://5fhlq1be5klv" path="res://assets/mainMenu/bg_placeholder.png" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://bqjvybtbhwxuh" path="res://scripts/main/mainUI.gd" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://cjssiq1cqyu4t" path="res://assets/characters/miku/miku.png" id="4_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://bufjvfgnj567g" path="res://assets/images/hands/hands1.png" id="4_4c57u"]
 [ext_resource type="Script" uid="uid://dn0wiurjdhawu" path="res://scripts/main/dialougeBox.gd" id="4_lquwl"]
+[ext_resource type="Script" uid="uid://dmxejcydj3c4m" path="res://scripts/main/main_menu.gd" id="4_ycdy4"]
 [ext_resource type="Texture2D" uid="uid://dowfg6sdhvpdv" path="res://assets/images/hands/hands2.png" id="5_efxa6"]
-[ext_resource type="Script" uid="uid://cenpuxnv3kwkq" path="res://absurdity.gd" id="6_efxa6"]
-[ext_resource type="Script" path="res://epilepsy_warning.gd" id="7_5vw27"]
+[ext_resource type="Script" uid="uid://cenpuxnv3kwkq" path="res://scripts/main/absurdity.gd" id="6_efxa6"]
+[ext_resource type="Script" uid="uid://c8b1fm5ybb1yt" path="res://scripts/main/epilepsy_warning.gd" id="7_5vw27"]
 [ext_resource type="Texture2D" uid="uid://lp4u6sspnks6" path="res://assets/images/epilepsyWarning/epilepsyWarning.png" id="7_272bh"]
-[ext_resource type="Script" uid="uid://co754n1afiiid" path="res://level.gd" id="8_4c57u"]
+[ext_resource type="Script" uid="uid://co754n1afiiid" path="res://scripts/main/level.gd" id="8_4c57u"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ig7tw"]
 font_size = 200
@@ -43,6 +45,7 @@ frame_1/texture = ExtResource("5_efxa6")
 frame_1/duration = 0.1
 
 [node name="main" type="Node" unique_id=484706351]
+script = ExtResource("1_dg77c")
 
 [node name="levelContainer" type="Node" parent="." unique_id=114511472]
 script = ExtResource("1_ig7tw")
@@ -51,13 +54,13 @@ script = ExtResource("1_ig7tw")
 script = ExtResource("2_h2yge")
 
 [node name="mainMenu" type="Control" parent="mainUI" unique_id=635017227]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("4_ycdy4")
 
 [node name="background" type="TextureRect" parent="mainUI/mainMenu" unique_id=1437070143]
 layout_mode = 1
@@ -155,6 +158,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="absurdity" type="Control" parent="mainUI" unique_id=1032076131]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -162,7 +166,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6_efxa6")
-absurdityDecreaseRate = 2.0
+absurdityDecreaseRate = 0.3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="mainUI/absurdity" unique_id=1379039146]
 root_node = NodePath("")
@@ -247,6 +251,7 @@ grow_vertical = 2
 texture = ExtResource("7_272bh")
 
 [connection signal="pressed" from="mainUI/mainMenu/Buttons/Start" to="mainUI" method="_on_start_pressed"]
+[connection signal="pressed" from="mainUI/mainMenu/Buttons/Start" to="mainUI/mainMenu" method="_on_start_pressed"]
 [connection signal="pressed" from="mainUI/mainMenu/Buttons/Quit" to="mainUI" method="_on_quit_pressed"]
 [connection signal="showLevel" from="mainUI/absurdity" to="mainUI/absurdity/Meter/MarginContainer/ActualLevelBox" method="showLevel"]
 [connection signal="timeout" from="mainUI/epilepsyWarning/warningShowTimer" to="mainUI/epilepsyWarning" method="_on_warning_show_timer_timeout"]
