@@ -12,12 +12,12 @@ enum moveTypes {
 
 var moveType: int;
 var moveName: String;
-var animation: Animation;
+var animationName: String;
 
-func _init(moveType: int, moveName: String, animation: Animation = Animation.new()) -> void:
+func _init(moveType: int, moveName: String, animationName: String) -> void:
 	self.moveType = moveType;
 	self.moveName = moveName;
-	self.animation = animation;
+	self.animationName = animationName;
 	
 func getName() -> String:
 	return moveName;

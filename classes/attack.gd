@@ -1,10 +1,10 @@
 extends move;
 class_name attack;
 
-func _init(attackName: String, animation: Animation = Animation.new()) -> void:
+func _init(attackName: String, animationName: String) -> void:
 	self.moveType = move.moveTypes.attack;
 	self.moveName = attackName;
-	self.animation = animation;
+	self.animation = animationName;
 	
 func getName() -> String:
 	return moveName;
