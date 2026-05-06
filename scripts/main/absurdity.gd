@@ -2,7 +2,7 @@ extends Control
 
 var absurdity: float = 0.8;
 
-var active: bool = true;
+var active: bool = false;
 
 @onready var main: Node = get_tree().get_root().get_node("main");
 
@@ -34,3 +34,7 @@ func _process(delta: float) -> void:
 
 func absurdityLevel(callback: Callable):
 	callback.call(absurdity);
+
+
+func _on_start_pressed() -> void:
+	active = true;
