@@ -6,13 +6,15 @@ var active: bool = false;
 
 @onready var main: Node = get_tree().get_root().get_node("main");
 
-@export var absurdityDecreaseRate: float; ## The amount to decrease absurdity by per minute
+@export var duration: float; ## How long it takes for absurdity to be depleted, in minutes
+
+var absurdityDecreaseRate: float;
 
 signal showLevel(levelFraction: float);
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	absurdityDecreaseRate = 1/duration;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
