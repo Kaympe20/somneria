@@ -237,7 +237,7 @@ grow_vertical = 2
 script = ExtResource("7_5vw27")
 
 [node name="warningShowTimer" type="Timer" parent="mainUI/epilepsyWarning" unique_id=1930902410]
-wait_time = 0.1
+wait_time = 8.0
 one_shot = true
 autostart = true
 
@@ -252,6 +252,7 @@ texture = ExtResource("7_272bh")
 
 [connection signal="pressed" from="mainUI/mainMenu/Buttons/Start" to="mainUI" method="_on_start_pressed"]
 [connection signal="pressed" from="mainUI/mainMenu/Buttons/Start" to="mainUI/mainMenu" method="_on_start_pressed"]
+[connection signal="pressed" from="mainUI/mainMenu/Buttons/Start" to="mainUI/absurdity" method="_on_start_pressed"]
 [connection signal="pressed" from="mainUI/mainMenu/Buttons/Quit" to="mainUI" method="_on_quit_pressed"]
 [connection signal="showLevel" from="mainUI/absurdity" to="mainUI/absurdity/Meter/MarginContainer/ActualLevelBox" method="showLevel"]
 [connection signal="timeout" from="mainUI/epilepsyWarning/warningShowTimer" to="mainUI/epilepsyWarning" method="_on_warning_show_timer_timeout"]

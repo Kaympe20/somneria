@@ -7,8 +7,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-
+	if visible and Input.is_action_just_pressed("ui_accept"):
+		hide()
 
 func _on_warning_show_timer_timeout() -> void:
 	hide();
