@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cjssiq1cqyu4t" path="res://assets/characters/miku/miku.png" id="5_hnff8"]
 [ext_resource type="Script" uid="uid://d4d3ut21h6x3t" path="res://views/battle/menu/menuItems.gd" id="6_hnff8"]
 [ext_resource type="PackedScene" uid="uid://8gqru2aqg5oc" path="res://views/battle/menu/menuItem.tscn" id="7_je4tf"]
+[ext_resource type="Script" uid="uid://bnbkk7nevfh1h" path="res://views/battle/playerHealthBar.gd" id="11_yd87w"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ha4bs"]
 panorama = ExtResource("1_0xjgq")
@@ -35,6 +36,22 @@ size = Vector3(30, 1, 30)
 material = SubResource("StandardMaterial3D_0xjgq")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_je4tf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xyd4w"]
+bg_color = Color(0.93333334, 0.38039216, 0.5764706, 1)
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 12
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yd87w"]
+bg_color = Color(0, 0.713631, 0.43350008, 1)
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 12
+border_color = Color(0, 0, 0, 1)
 
 [node name="battle" type="Node3D" unique_id=296885428]
 script = ExtResource("1_qkadb")
@@ -243,6 +260,31 @@ offset_bottom = 0.079956055
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
+
+[node name="HealthBars" type="Control" parent="ui" unique_id=1569134649]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="playerHealthBar" type="ProgressBar" parent="ui/HealthBars" unique_id=90655367]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -310.0
+offset_top = 32.0
+offset_right = 313.5
+offset_bottom = 121.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 58
+theme_override_styles/background = SubResource("StyleBoxFlat_xyd4w")
+theme_override_styles/fill = SubResource("StyleBoxFlat_yd87w")
+value = 50.0
+script = ExtResource("11_yd87w")
 
 [connection signal="confirmationEnded" from="ui/MenuContainer/Menu" to="ui/MenuContainer/Menu/ConfirmationText" method="_on_confirmation_ended"]
 [connection signal="confirmationRequested" from="ui/MenuContainer/Menu" to="ui/MenuContainer/Menu/ConfirmationText" method="_on_confirmation_requested"]
