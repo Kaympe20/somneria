@@ -8,3 +8,4 @@ signal updateDialouge(dialouge: String);
 signal newBattle(backgroundName: String, enemyNames: Array[String]);
 signal playerAbsurdityCheck();
 signal absurdityLevel(callback: Callable);
+signal playerDamage(damage: float);

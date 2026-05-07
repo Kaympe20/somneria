@@ -9,6 +9,7 @@ enum menuScreens {
 }
 var currentMenuScreen = menuScreens.main;
 var displayedMenuScreen = currentMenuScreen;
+var playerHealth: float = 100;
 
 @onready var MovingParts: Control = get_node("ui/Intro/MovingParts");
 @onready var Intro: Control = get_node("ui/Intro");
