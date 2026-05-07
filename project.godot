@@ -20,6 +20,12 @@ config/icon="res://assets/icon.svg"
 
 Bus="*uid://cyt2ojq0hmuqk"
 
+[debug]
+
+gdscript/warnings/unused_parameter=0
+gdscript/warnings/unused_signal=0
+gdscript/warnings/shadowed_variable=0
+
 [display]
 
 window/size/viewport_width=1920
@@ -33,6 +39,7 @@ enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/
 [global_group]
 
 Player=""
+model=""
 
 [input]
 

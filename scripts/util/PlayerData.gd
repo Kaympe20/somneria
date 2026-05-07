@@ -23,10 +23,10 @@ static func getMoveNames(moveArray: Array[move]) -> Array[String]:
 
 static func convertToMoves(nonMoveArray: Array): ## Fixes godot's inallowance of casting from parent to child
 	var moveArray: Array[move] = [];
-	for move in nonMoveArray:
-		moveArray.append(move);
+	for currentMove in nonMoveArray:
+		moveArray.append(currentMove);
 	return moveArray;
 	
 static func getAttacks() -> Array[attack]:
-	var currentAttacks: Array[attack] = [attack.new("Big Depleting Attack"), attack.new("Small Eco Attack")];
+	var currentAttacks: Array[attack] = [attack.new("Big Depleting Attack","", 3), attack.new("Small Eco Attack", "", 3)];
 	return currentAttacks;

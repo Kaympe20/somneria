@@ -27,17 +27,17 @@ func _process(delta: float) -> void:
 			finishedIntro.emit();
 			
 
-func loadEnemies(enemyNames: Array[String]):
-	assert(enemyNames.size() <= 3, "loadeEnemies() in Intro recieved an array with more than 3 values.");
-	for index in range(enemyNames.size()):
-		var enemyName: String = enemyNames[index];
-		var enemyHeadshot: CompressedTexture2D = load("res://assets/characters/%s/%s.png" % [enemyName, enemyName]);
+func loadEnemies(enemies: Array[enemy]):
+	assert(enemies.size() <= 3, "loadeEnemies() in Intro recieved an array with more than 3 values.");
+	for index in range(enemies.size()):
+		var currentEnemy: enemy = enemies[index];
+		var enemyHeadshot: CompressedTexture2D = currentEnemy.headshot;
 
 		var enemyNode = TextureRect.new();
 		enemyNode.texture = enemyHeadshot;
-		enemyNode.expand_mode = TextureRect.EXPAND_IGNORE_SIZE;
-		enemyNode.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED;
-		enemyNode.size_flags_horizontal = Control.SIZE_EXPAND_FILL;
+		# enemyNode.expand_mode = TextureRect.EXPAND_IGNORE_SIZE;
+		# enemyNode.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED;
+		#enemyNode.size_flags_horizontal = Control.SIZE_EXPAND_FILL;
 		enemyNode.size_flags_vertical = Control.SIZE_EXPAND_FILL;
 		
 		$HBoxContainer.add_child(enemyNode);
