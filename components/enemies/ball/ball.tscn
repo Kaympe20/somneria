@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cj3o7o7664862"]
+
+[ext_resource type="Script" uid="uid://bl68jfnuipv2r" path="res://components/enemies/ball/ball.gd" id="1_gk7sp"]
+[ext_resource type="PackedScene" uid="uid://cjd0yxjesxuu3" path="res://components/enemies/ball/worst ball bounce ever.glb" id="2_35ucd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gk7sp"]
+size = Vector3(1, 2, 1)
+
+[node name="Ball" type="CharacterBody3D" unique_id=2077212022]
+script = ExtResource("1_gk7sp")
+metadata/_custom_type_script = "uid://dplpl6xdk2di0"
+
+[node name="worst ball bounce ever" parent="." unique_id=852460494 instance=ExtResource("2_35ucd")]
+
+[node name="Sphere" parent="worst ball bounce ever" index="0" unique_id=1751699967]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.0630937, 0)
+
+[node name="AnimationPlayer" parent="worst ball bounce ever" index="1" unique_id=166447216]
+autoplay = &"SphereAction"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=253751248]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_gk7sp")
+
+[editable path="worst ball bounce ever"]

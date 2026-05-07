@@ -8,16 +8,14 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func spawnEnemies(enemyNames: Array[String]):
-	assert(enemyNames.size() <= 3, "spawnEnemies() recieved an array with more than 3 values.");
-	for index in range(enemyNames.size()):
-		var enemyName: String = enemyNames[index];
-		var enemyFile: PackedScene = load("res://components/characters/%s/%s.tscn" % [enemyName, enemyName]);
-		
-		var enemyNode: Node3D = enemyFile.instantiate();
+func spawnEnemies(enemies: Array[enemy]):
+	assert(enemies.size() <= 3, "spawnEnemies() recieved an array with more than 3 values.");
+	for index in range(enemies.size()):
+		var enemy = enemies[index];
 		
 		var parentNode: Node3D = get_node("Enemy%s" % (index + 1));
 		
-		parentNode.add_child(enemyNode);
-		print("Enemy Added: %s" % enemyName);
+		parentNode.add_child(enemy);
+		
+		print("Enemy Added: %s" % enemy.name);
 	print("Enemies finished spawning");
