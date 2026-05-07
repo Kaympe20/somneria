@@ -1,7 +1,10 @@
 extends CharacterBody3D
 class_name enemy
 
+signal death();
+
 var attacks: Array[attack];
+var health: float;
 var headshot: CompressedTexture2D;
 var model: PackedScene;
 var modelInstance: Node3D;
@@ -27,5 +30,8 @@ func performAttack(attackToPerform: attack):
 			
 	animationPlayer.play(attackToPerform.animationName);
 	Bus.playerDamage.emit(attackToPerform.baseDamage);
-	
-	
+
+func _process(delta: float) -> void:
+	if health <= 0:
+		death.emit();
+		queue_free();
