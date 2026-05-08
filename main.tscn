@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://blxcjud6ji8nr"]
 
-[ext_resource type="Script" uid="uid://bo3snyhg5nqj8" path="res://main.gd" id="1_dg77c"]
+[ext_resource type="Script" uid="uid://bo3snyhg5nqj8" path="res://scripts/main/main.gd" id="1_dg77c"]
 [ext_resource type="Script" uid="uid://dq7rlk4asadnt" path="res://scripts/main/levelLoader.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://5fhlq1be5klv" path="res://assets/mainMenu/bg_placeholder.png" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://bqjvybtbhwxuh" path="res://scripts/main/mainUI.gd" id="2_h2yge"]
@@ -13,8 +13,8 @@
 [ext_resource type="Script" uid="uid://c8b1fm5ybb1yt" path="res://scripts/main/epilepsy_warning.gd" id="7_5vw27"]
 [ext_resource type="Texture2D" uid="uid://lp4u6sspnks6" path="res://assets/images/epilepsyWarning/epilepsyWarning.png" id="7_272bh"]
 [ext_resource type="Script" uid="uid://co754n1afiiid" path="res://scripts/main/level.gd" id="8_4c57u"]
-[ext_resource type="Script" uid="uid://2bmra10ry5qe" path="res://win_lose.gd" id="14_vivmo"]
-[ext_resource type="Script" uid="uid://kw6126hl3iiy" path="res://win-lose_label.gd" id="15_2cqfq"]
+[ext_resource type="Script" uid="uid://2bmra10ry5qe" path="res://scripts/main/win_lose.gd" id="14_vivmo"]
+[ext_resource type="Script" uid="uid://kw6126hl3iiy" path="res://scripts/main/win-lose_label.gd" id="15_2cqfq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ig7tw"]
 font_size = 200
