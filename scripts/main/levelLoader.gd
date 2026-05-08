@@ -46,7 +46,11 @@ func loadLevel(levelIdentifier):
 func _ready() -> void:
 	Bus.returnToReality.connect(loadBedroom);
 	Bus.loadLevel.connect(loadLevel);
-	Bus.gameStart.connect(loadBedroom);
+	#Bus.gameStart.connect(loadBedroom);
+	Bus.gameStart.connect(loadHallway);
+
+func loadHallway():
+	loadLevel("hallway");
 
 func loadBedroom():
 	loadLevel("bedroom");

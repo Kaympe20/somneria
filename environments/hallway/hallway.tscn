@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://grk6wf130hb7"]
 
 [ext_resource type="PackedScene" uid="uid://bmioen0yd76vq" path="res://environments/hallway/hallway.glb" id="1_s28rn"]
-[ext_resource type="PackedScene" uid="uid://csbngv28gx0ml" path="res://views/player/player.tscn" id="2_k88b4"]
+[ext_resource type="PackedScene" uid="uid://csbngv28gx0ml" path="res://components/player/player.tscn" id="2_k88b4"]
+[ext_resource type="Script" uid="uid://dappe1h7j6s5v" path="res://environments/hallway/area_3d.gd" id="3_r3brm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k88b4"]
 size = Vector3(5, 0.75, 20.94336)
@@ -25,9 +26,9 @@ orientation = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005245447, 0.11382568, 0)
 firstPerson = true
 
-[node name="hallway" parent="." unique_id=490726381 instance=ExtResource("1_s28rn")]
+[node name="hallway" parent="." unique_id=35935049 instance=ExtResource("1_s28rn")]
 
-[node name="wall_R" parent="hallway" index="0" unique_id=1451800597]
+[node name="wall_R" parent="hallway" index="0" unique_id=298589271]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016193867, 1.1920929e-07, 0.0006084442)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="hallway" unique_id=2056922978]
@@ -79,6 +80,7 @@ omni_range = 13.022
 
 [node name="Area3D" type="Area3D" parent="ends" unique_id=662329671]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -10.458)
+script = ExtResource("3_r3brm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ends/Area3D" unique_id=2099567157]
 shape = SubResource("BoxShape3D_r3brm")
@@ -96,5 +98,8 @@ shape = SubResource("BoxShape3D_r3brm")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ends/Area3D2" unique_id=1937239215]
 transform = Transform3D(2.3000002, 0, 0, 0, 1.7, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("PlaneMesh_plg2q")
+
+[connection signal="body_entered" from="ends/Area3D" to="ends/Area3D" method="_on_body_entered"]
+[connection signal="body_entered" from="ends/Area3D2" to="ends/Area3D" method="_on_body_entered"]
 
 [editable path="hallway"]

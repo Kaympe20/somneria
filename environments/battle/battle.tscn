@@ -73,14 +73,18 @@ mesh = SubResource("BoxMesh_0xjgq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32590437, 0, 3.2507277)
 script = ExtResource("2_ha4bs")
 
-[node name="Enemy1" type="Node3D" parent="Enemies" unique_id=712042464]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.5718617, 0, -2.4212961)
-
-[node name="Enemy2" type="Node3D" parent="Enemies" unique_id=30510046]
+[node name="Enemy1" type="Node3D" parent="Enemies" unique_id=30510046]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.7417321, 0, 0.8560753)
+
+[node name="Enemy2" type="Node3D" parent="Enemies" unique_id=712042464]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.5718617, 0, -2.4212961)
 
 [node name="Enemy3" type="Node3D" parent="Enemies" unique_id=1996021712]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -7.172524, 0, -2.4212961)
+
+[node name="Timer" type="Timer" parent="Enemies" unique_id=1775629316]
+wait_time = 0.2
+one_shot = true
 
 [node name="You" type="Node3D" parent="." unique_id=521535443]
 transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 2.3841858e-07, 0, 9.962204)
@@ -286,9 +290,11 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_yd87w")
 value = 50.0
 script = ExtResource("11_yd87w")
 
+[connection signal="reopenMenu" from="." to="ui/MenuContainer" method="_on_battle_reopen_menu"]
 [connection signal="confirmationEnded" from="ui/MenuContainer/Menu" to="ui/MenuContainer/Menu/ConfirmationText" method="_on_confirmation_ended"]
 [connection signal="confirmationRequested" from="ui/MenuContainer/Menu" to="ui/MenuContainer/Menu/ConfirmationText" method="_on_confirmation_requested"]
 [connection signal="confirmationRequested" from="ui/MenuContainer/Menu" to="ui/MenuContainer/Menu/MenuItems" method="_on_confirmation_request"]
+[connection signal="playerMove" from="ui/MenuContainer/Menu" to="Enemies" method="_on_player_attack"]
 [connection signal="playerMove" from="ui/MenuContainer/Menu" to="ui/MenuContainer" method="_on_menu_player_move"]
 [connection signal="renderMenuItems" from="ui/MenuContainer/Menu" to="ui/MenuContainer/Menu/MenuItems" method="renderItems"]
 [connection signal="optionSelected" from="ui/MenuContainer/Menu/MenuItems" to="ui/MenuContainer/Menu" method="_on_option_select"]

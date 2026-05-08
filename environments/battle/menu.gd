@@ -2,7 +2,7 @@ extends Control
 
 signal renderMenuItems(options: Array[String]);
 
-signal playerMove(move: move);
+signal playerMove(move: move, enemyToAttack: int);
 
 var moveType: int;
 
@@ -94,7 +94,6 @@ func runConfirmation(actionToMarkAsPending: move):
 func endConfirmation(result: bool):
 	isConfirmation = false;
 	if result:
-		playerMove.emit(pendingAction);
-	else:
-		currentMenuScreen = menuScreens.main;
+		playerMove.emit(pendingAction, 1);
+	currentMenuScreen = menuScreens.main;
 	confirmationEnded.emit();
