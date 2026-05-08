@@ -5,3 +5,4 @@ logs/
 addons/
 .vscode/.code-workspace
 *.tmp
+exports/
