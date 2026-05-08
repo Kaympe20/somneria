@@ -19,3 +19,19 @@ func spawnEnemies(enemies: Array[enemy]):
 		
 		print("Enemy Added: %s" % enemy.name);
 	print("Enemies finished spawning");
+
+
+func _on_player_attack(playerMove: move, enemyToAttack: int) -> void:
+	# Get enemy
+	var enemyContainer: Node3D = get_node("Enemy%s" % enemyToAttack);
+	var enemyNode: enemy = enemyContainer.get_children()[0];
+	
+	enemyNode.health -= playerMove.baseDamage;
+	
+	if enemyNode.health <= 0:
+		Bus.winCondition.emit();
+	else:
+		$Timer.start();
+		await $Timer.timeout;
+		enemyNode.performAttack(enemyNode.attacks[0])
+	

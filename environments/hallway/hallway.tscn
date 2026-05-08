@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://grk6wf130hb7"]
+
+[ext_resource type="PackedScene" uid="uid://bmioen0yd76vq" path="res://environments/hallway/hallway.glb" id="1_s28rn"]
+[ext_resource type="PackedScene" uid="uid://csbngv28gx0ml" path="res://components/player/player.tscn" id="2_k88b4"]
+[ext_resource type="Script" uid="uid://dappe1h7j6s5v" path="res://environments/hallway/area_3d.gd" id="3_r3brm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k88b4"]
+size = Vector3(5, 0.75, 20.94336)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_plg2q"]
+size = Vector3(0.7071533, 5, 23)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r3brm"]
+size = Vector3(5, 3, 0.001)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k88b4"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_plg2q"]
+material = SubResource("StandardMaterial3D_k88b4")
+orientation = 2
+
+[node name="hallway" type="Node3D" unique_id=2070637988]
+
+[node name="Player" parent="." unique_id=1491157744 instance=ExtResource("2_k88b4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005245447, 0.11382568, 0)
+firstPerson = true
+
+[node name="hallway" parent="." unique_id=35935049 instance=ExtResource("1_s28rn")]
+
+[node name="wall_R" parent="hallway" index="0" unique_id=298589271]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016193867, 1.1920929e-07, 0.0006084442)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="hallway" unique_id=2056922978]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hallway/StaticBody3D" unique_id=140397361]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3828008, 0.028320313)
+shape = SubResource("BoxShape3D_k88b4")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="hallway" unique_id=1360999669]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hallway/StaticBody3D2" unique_id=1139566467]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 2, 0)
+shape = SubResource("BoxShape3D_plg2q")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="hallway" unique_id=2110284080]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hallway/StaticBody3D3" unique_id=1949801668]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14642334, 0, 0)
+shape = SubResource("BoxShape3D_plg2q")
+
+[node name="lights" type="Node3D" parent="." unique_id=1268315768]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="lights" unique_id=258967887]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.105743)
+omni_range = 13.022
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="lights" unique_id=518719479]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.884486)
+omni_range = 13.022
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="lights" unique_id=1986055202]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.177941)
+omni_range = 13.022
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="lights" unique_id=1727262488]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.7603521)
+omni_range = 13.022
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="lights" unique_id=243939960]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.6370764)
+omni_range = 13.022
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="lights" unique_id=384834789]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.981999)
+omni_range = 13.022
+
+[node name="ends" type="Node3D" parent="." unique_id=1114428479]
+
+[node name="Area3D" type="Area3D" parent="ends" unique_id=662329671]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -10.458)
+script = ExtResource("3_r3brm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ends/Area3D" unique_id=2099567157]
+shape = SubResource("BoxShape3D_r3brm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ends/Area3D" unique_id=812181185]
+transform = Transform3D(2.3000002, 0, 0, 0, 1.7, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("PlaneMesh_plg2q")
+
+[node name="Area3D2" type="Area3D" parent="ends" unique_id=1700115060]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 10.491146)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ends/Area3D2" unique_id=37150270]
+shape = SubResource("BoxShape3D_r3brm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ends/Area3D2" unique_id=1937239215]
+transform = Transform3D(2.3000002, 0, 0, 0, 1.7, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("PlaneMesh_plg2q")
+
+[connection signal="body_entered" from="ends/Area3D" to="ends/Area3D" method="_on_body_entered"]
+[connection signal="body_entered" from="ends/Area3D2" to="ends/Area3D" method="_on_body_entered"]
+
+[editable path="hallway"]

@@ -28,5 +28,5 @@ static func convertToMoves(nonMoveArray: Array): ## Fixes godot's inallowance of
 	return moveArray;
 	
 static func getAttacks() -> Array[attack]:
-	var currentAttacks: Array[attack] = [attack.new("Big Depleting Attack","", 3), attack.new("Small Eco Attack", "", 3)];
+	var currentAttacks: Array[attack] = [attack.new("Big Depleting Attack","", 50), attack.new("Small Eco Attack", "", 20)];
 	return currentAttacks;

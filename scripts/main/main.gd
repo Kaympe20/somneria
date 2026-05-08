@@ -23,5 +23,5 @@ func _process(delta: float) -> void:
 	frameCount += 1;
 	
 	if frameCount == 10:
-		print(activeView());
+		#print(activeView());
 		frameCount = 0;

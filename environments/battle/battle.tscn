@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://cdchhundhrpbe"]
 
 [ext_resource type="Texture2D" uid="uid://fgabqm57mf4w" path="res://assets/backgrounds/battle/house.exr" id="1_0xjgq"]
-[ext_resource type="Script" uid="uid://bpcoadg1nx28" path="res://views/battle/battle.gd" id="1_qkadb"]
-[ext_resource type="Script" uid="uid://c2cx2m2py61vc" path="res://views/battle/enemies.gd" id="2_ha4bs"]
-[ext_resource type="Script" uid="uid://bapuo20imf482" path="res://views/battle/intro.gd" id="4_82wna"]
-[ext_resource type="Script" uid="uid://bhreqc3ga783a" path="res://views/battle/menu.gd" id="4_rwkki"]
-[ext_resource type="Script" uid="uid://bgtcyv1qpbrfq" path="res://views/battle/label.gd" id="4_twn4g"]
-[ext_resource type="Script" uid="uid://bbvdowujbw4e6" path="res://views/battle/menuContainer.gd" id="4_xyd4w"]
+[ext_resource type="Script" uid="uid://bpcoadg1nx28" path="res://environments/battle/battle.gd" id="1_qkadb"]
+[ext_resource type="Script" uid="uid://c2cx2m2py61vc" path="res://environments/battle/enemies.gd" id="2_ha4bs"]
+[ext_resource type="Script" uid="uid://bapuo20imf482" path="res://environments/battle/intro.gd" id="4_82wna"]
+[ext_resource type="Script" uid="uid://bhreqc3ga783a" path="res://environments/battle/menu.gd" id="4_rwkki"]
+[ext_resource type="Script" uid="uid://bgtcyv1qpbrfq" path="res://environments/battle/label.gd" id="4_twn4g"]
+[ext_resource type="Script" uid="uid://bbvdowujbw4e6" path="res://environments/battle/menuContainer.gd" id="4_xyd4w"]
 [ext_resource type="Texture2D" uid="uid://cjssiq1cqyu4t" path="res://assets/characters/miku/miku.png" id="5_hnff8"]
-[ext_resource type="Script" uid="uid://d4d3ut21h6x3t" path="res://views/battle/menu/menuItems.gd" id="6_hnff8"]
-[ext_resource type="PackedScene" uid="uid://8gqru2aqg5oc" path="res://views/battle/menu/menuItem.tscn" id="7_je4tf"]
-[ext_resource type="Script" uid="uid://bnbkk7nevfh1h" path="res://views/battle/playerHealthBar.gd" id="11_yd87w"]
+[ext_resource type="Script" uid="uid://d4d3ut21h6x3t" path="res://environments/battle/menu/menuItems.gd" id="6_hnff8"]
+[ext_resource type="PackedScene" uid="uid://8gqru2aqg5oc" path="res://environments/battle/menu/menuItem.tscn" id="7_je4tf"]
+[ext_resource type="Script" uid="uid://bnbkk7nevfh1h" path="res://environments/battle/playerHealthBar.gd" id="11_yd87w"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ha4bs"]
 panorama = ExtResource("1_0xjgq")
@@ -73,14 +73,18 @@ mesh = SubResource("BoxMesh_0xjgq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32590437, 0, 3.2507277)
 script = ExtResource("2_ha4bs")
 
-[node name="Enemy1" type="Node3D" parent="Enemies" unique_id=712042464]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.5718617, 0, -2.4212961)
-
-[node name="Enemy2" type="Node3D" parent="Enemies" unique_id=30510046]
+[node name="Enemy1" type="Node3D" parent="Enemies" unique_id=30510046]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.7417321, 0, 0.8560753)
+
+[node name="Enemy2" type="Node3D" parent="Enemies" unique_id=712042464]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.5718617, 0, -2.4212961)
 
 [node name="Enemy3" type="Node3D" parent="Enemies" unique_id=1996021712]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -7.172524, 0, -2.4212961)
+
+[node name="Timer" type="Timer" parent="Enemies" unique_id=1775629316]
+wait_time = 0.2
+one_shot = true
 
 [node name="You" type="Node3D" parent="." unique_id=521535443]
 transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 2.3841858e-07, 0, 9.962204)
@@ -168,6 +172,76 @@ theme_override_constants/v_separation = 10
 columns = 2
 script = ExtResource("6_hnff8")
 labelScene = ExtResource("7_je4tf")
+
+[node name="HealthBars" type="Control" parent="ui" unique_id=1569134649]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="playerHealthBar" type="ProgressBar" parent="ui/HealthBars" unique_id=90655367]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -310.0
+offset_top = 32.0
+offset_right = 313.5
+offset_bottom = 121.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 58
+theme_override_styles/background = SubResource("StyleBoxFlat_xyd4w")
+theme_override_styles/fill = SubResource("StyleBoxFlat_yd87w")
+value = 50.0
+script = ExtResource("11_yd87w")
+
+[node name="keybinds" type="Control" parent="ui" unique_id=130767831]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -606.0
+offset_bottom = 383.0
+grow_horizontal = 0
+
+[node name="ColorRect" type="ColorRect" parent="ui/keybinds" unique_id=1604537541]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.003921569, 0.003921569, 0.003921569, 0.5411765)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ui/keybinds" unique_id=710522396]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="ui/keybinds/VBoxContainer" unique_id=451030911]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 71
+text = "Keybinds"
+horizontal_alignment = 1
+
+[node name="Title2" type="Label" parent="ui/keybinds/VBoxContainer" unique_id=47985625]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "W/Up - Up
+S/Down - Down
+A/Left - Left
+D/Right - Right
+Enter/Space - Select
+Esc - Back"
+horizontal_alignment = 1
 
 [node name="Intro" type="Control" parent="ui" unique_id=1809714030]
 layout_mode = 3
@@ -261,34 +335,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="HealthBars" type="Control" parent="ui" unique_id=1569134649]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="playerHealthBar" type="ProgressBar" parent="ui/HealthBars" unique_id=90655367]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -310.0
-offset_top = 32.0
-offset_right = 313.5
-offset_bottom = 121.0
-grow_horizontal = 2
-theme_override_constants/outline_size = 30
-theme_override_font_sizes/font_size = 58
-theme_override_styles/background = SubResource("StyleBoxFlat_xyd4w")
-theme_override_styles/fill = SubResource("StyleBoxFlat_yd87w")
-value = 50.0
-script = ExtResource("11_yd87w")
-
+[connection signal="reopenMenu" from="." to="ui/MenuContainer" method="_on_battle_reopen_menu"]
 [connection signal="confirmationEnded" from="ui/MenuContainer/Menu" to="ui/MenuContainer/Menu/ConfirmationText" method="_on_confirmation_ended"]
 [connection signal="confirmationRequested" from="ui/MenuContainer/Menu" to="ui/MenuContainer/Menu/ConfirmationText" method="_on_confirmation_requested"]
 [connection signal="confirmationRequested" from="ui/MenuContainer/Menu" to="ui/MenuContainer/Menu/MenuItems" method="_on_confirmation_request"]
+[connection signal="playerMove" from="ui/MenuContainer/Menu" to="Enemies" method="_on_player_attack"]
 [connection signal="playerMove" from="ui/MenuContainer/Menu" to="ui/MenuContainer" method="_on_menu_player_move"]
 [connection signal="renderMenuItems" from="ui/MenuContainer/Menu" to="ui/MenuContainer/Menu/MenuItems" method="renderItems"]
 [connection signal="optionSelected" from="ui/MenuContainer/Menu/MenuItems" to="ui/MenuContainer/Menu" method="_on_option_select"]

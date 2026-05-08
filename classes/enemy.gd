@@ -20,6 +20,8 @@ func _ready() -> void:
 	hitbox.shape = BoxShape3D.new();
 	hitbox.shape.size = hitboxDimensions;
 	add_child(hitbox);
+	
+	_postReady();
 
 func performAttack(attackToPerform: attack):
 	var animationPlayer: AnimationPlayer;
@@ -29,9 +31,15 @@ func performAttack(attackToPerform: attack):
 			animationPlayer = child;
 			
 	animationPlayer.play(attackToPerform.animationName);
+	
+	await animationPlayer.animation_finished;
+	
 	Bus.playerDamage.emit(attackToPerform.baseDamage);
 
 func _process(delta: float) -> void:
 	if health <= 0:
 		death.emit();
 		queue_free();
+
+func _postReady() -> void:
+	pass
